@@ -1,9 +1,16 @@
 {
   "name": "nautilus",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "dev": "esbuild src/index.ts --bundle --sourcemap --outdir=dist --watch"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/N3mus/nautilus"
@@ -16,6 +23,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^19.0.1",
+    "esbuild": "^0.24.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "typescript": "^5.7.2"

@@ -12,11 +12,11 @@
     "maxNodeModuleJsDepth": 1,
 
     /* Emit */
-    "declaration": true,
     "emitDeclarationOnly": true,
     "sourceMap": true,
-    "outDir": "dist",
-    "declarationDir": "types",
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationDir": "./dist",
 
     /* Interop Constraints */
     "allowSyntheticDefaultImports": true,
