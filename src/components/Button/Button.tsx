@@ -3,7 +3,7 @@ export type ButtonProps = {
 };
 
 function Button(props: ButtonProps) {
-  return <button {...props} />;
+  return <button className="bg-red-500" {...props} />;
 }
 
 export default Button;
