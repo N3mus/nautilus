@@ -22,7 +22,15 @@
   "bugs": {
     "url": "https://github.com/N3mus/nautilus/issues"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "ui",
+    "design-system",
+    "react-components",
+    "components",
+    "library",
+    "design-system"
+  ],
   "author": "Knevari",
   "license": "MIT",
   "devDependencies": {
@@ -43,5 +51,10 @@
   },
   "peerDependencies": {
     "react": ">16.8"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "cva": "npm:class-variance-authority@^0.7.1",
+    "tailwind-merge": "^2.5.5"
   }
 }
