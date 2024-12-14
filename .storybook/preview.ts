@@ -9,6 +9,7 @@ const preview: Preview = {
       values: [
         { name: "light", value: "#f3f3f3" },
         { name: "dark", value: "#131313" },
+        { name: "gray", value: "#3F4346" },
       ],
     },
     controls: {

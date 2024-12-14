@@ -10,7 +10,7 @@ export const getButtonClasses = cva(
           "disabled:bg-radial-top-disabled disabled:text-black",
         ],
         primary: ["bg-white", "disabled:bg-white/25"],
-        secondary: "",
+        secondary: ["text-white"],
         flat: "",
         dangerPrimary: "",
         dangerSecondary: "",

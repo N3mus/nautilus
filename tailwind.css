@@ -8,5 +8,6 @@
     --color-green: #32ff5f;
     --color-gray: #3f4346;
     --color-red: #ff0000;
+    --color-secondary-border-bg: var(--color-gray);
   }
 }

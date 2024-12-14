@@ -1,4 +1,4 @@
-import { ElementType, useEffect, useState } from "react";
+import { ElementType, useCallback, useEffect, useState } from "react";
 import {
   motion,
   useMotionTemplate,
@@ -12,7 +12,7 @@ import { getButtonClasses, type CVAButtonProps } from "./Button.variants";
 import { cn } from "utils/cn";
 
 const GRADIENT_START = -150;
-const GRADIENT_END = 200;
+const GRADIENT_END = 300;
 
 const whileVariants = {
   hover: {
@@ -36,6 +36,15 @@ const isGradientTextVariant = (
   typeof v === "string" &&
   (variantsWithGradientText as ReadonlyArray<string>).includes(v);
 
+const getGradientOutsideColor = (
+  v: CVAButtonProps["variant"],
+  disabled?: boolean
+) => {
+  const color = v === "secondary" ? "255, 255, 255" : "0, 0, 0";
+  const alpha = disabled ? 0.25 : 1;
+  return `rgba(${color}, ${alpha})`;
+};
+
 export type ButtonProps<C extends ElementType> = PolymorphicPropsWithRef<
   C,
   CVAButtonProps
@@ -48,6 +57,7 @@ export function Button<C extends ElementType = "button">({
   children,
   disabled,
   className,
+  style,
   ...props
 }: ButtonProps<C>) {
   const [mouseIn, setMouseIn] = useState(false);
@@ -57,9 +67,12 @@ export function Button<C extends ElementType = "button">({
   const MotionComponent = motion<C>(Component);
   const variantClassNames = getButtonClasses({ variant, size });
 
+  const gradientOutsideColor = getGradientOutsideColor(variant, disabled);
+
   const gradientPosition = useMotionValue(GRADIENT_START);
   const gradientPositionSpring = useSpring(gradientPosition);
-  const gradientMotionTemplate = useMotionTemplate`radial-gradient(100% 100% at 50% ${gradientPositionSpring}%, var(--color-green) 0%, var(--color-blue) 100%, #000000 150%)`;
+  const gradientMotionTemplate = useMotionTemplate`radial-gradient(100% 100% at 50% ${gradientPositionSpring}%, var(--color-green) 0%, var(--color-blue) 100%, ${gradientOutsideColor} 150%)`;
+  const borderGradientMotionTemplate = useMotionTemplate`linear-gradient(var(--color-secondary-border-bg), var(--color-secondary-border-bg)), radial-gradient(100% 100% at 50% ${gradientPositionSpring}%, var(--color-green) 0%, var(--color-blue) 100%, ${gradientOutsideColor} 150%)`;
 
   useEffect(() => {
     if (disabled) {
@@ -73,7 +86,23 @@ export function Button<C extends ElementType = "button">({
     if (mouseOut) {
       gradientPosition.set(GRADIENT_END);
     }
-  }, [mouseIn, mouseOut, gradientPosition]);
+  }, [mouseIn, mouseOut, gradientPosition, disabled]);
+
+  const getBorderStyle = useCallback(() => {
+    if (variant !== "secondary") return undefined;
+    if (disabled) {
+      return {
+        border: "0.13rem solid rgba(255, 255, 255, 0.25)",
+      };
+    }
+    return {
+      border: "0.13rem solid transparent",
+      borderRadius: "0.5rem",
+      backgroundImage: borderGradientMotionTemplate,
+      backgroundOrigin: "border-box",
+      backgroundClip: "padding-box, border-box",
+    };
+  }, [borderGradientMotionTemplate]);
 
   return (
     <MotionComponent
@@ -94,6 +123,10 @@ export function Button<C extends ElementType = "button">({
         setMouseIn(false);
       }}
       className={cn(className, variantClassNames)}
+      style={{
+        ...getBorderStyle(),
+        ...style,
+      }}
       {...props}
     >
       {typeof children === "string" && isGradientTextVariant(variant) ? (
