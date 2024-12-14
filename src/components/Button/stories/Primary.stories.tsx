@@ -1,7 +1,7 @@
 import { fn } from "@storybook/test";
-import Button from "../../Button";
+import Button from "../Button";
 import { Meta, StoryObj } from "@storybook/react/*";
-import buttonArgTypes from "../button-argtypes";
+import buttonArgTypes from "./button-argtypes";
 
 const meta: Meta<typeof Button> = {
   title: "Button/Primary",

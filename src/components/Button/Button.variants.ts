@@ -5,13 +5,11 @@ export const getButtonClasses = cva(
   {
     variants: {
       variant: {
-        cta: "",
-        primary: [
-          // Default
-          "bg-white",
-          // Disabled
-          "disabled:bg-white/25",
+        cta: [
+          "bg-radial-top text-white",
+          "disabled:bg-radial-top-disabled disabled:text-black",
         ],
+        primary: ["bg-white", "disabled:bg-white/25"],
         secondary: "",
         flat: "",
         dangerPrimary: "",
