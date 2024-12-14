@@ -14,6 +14,15 @@ import { cn } from "utils/cn";
 const GRADIENT_START = -150;
 const GRADIENT_END = 200;
 
+const whileVariants = {
+  hover: {
+    boxShadow: "0 0 16px 0 var(--color-blue)",
+  },
+  tap: {
+    boxShadow: "0px 8px 8px 0px #00000040 inset",
+  },
+};
+
 const variantsWithGradientText = [
   "primary",
   "secondary",
@@ -34,9 +43,10 @@ export type ButtonProps<C extends ElementType> = PolymorphicPropsWithRef<
 
 export function Button<C extends ElementType = "button">({
   as,
-  variant,
-  size,
+  variant = "primary",
+  size = "medium",
   children,
+  disabled,
   className,
   ...props
 }: ButtonProps<C>) {
@@ -52,6 +62,10 @@ export function Button<C extends ElementType = "button">({
   const gradientMotionTemplate = useMotionTemplate`radial-gradient(100% 100% at 50% ${gradientPositionSpring}%, var(--color-green) 0%, var(--color-blue) 100%, #000000 150%)`;
 
   useEffect(() => {
+    if (disabled) {
+      return;
+    }
+
     if (mouseIn) {
       gradientPosition.set(0);
     }
@@ -63,16 +77,13 @@ export function Button<C extends ElementType = "button">({
 
   return (
     <MotionComponent
+      disabled={disabled}
       transition={{
         type: "tween",
         duration: 0.15,
       }}
-      whileHover={{
-        boxShadow: "0 0 16px 0 var(--color-blue)",
-      }}
-      whileTap={{
-        boxShadow: "0px 8px 8px 0px #00000040 inset",
-      }}
+      whileHover={disabled ? undefined : whileVariants.hover}
+      whileTap={disabled ? undefined : whileVariants.tap}
       onMouseEnter={() => {
         setMouseIn(true);
         setMouseOut(false);

@@ -5,6 +5,12 @@ import "../tailwind.css";
 
 const preview: Preview = {
   parameters: {
+    backgrounds: {
+      values: [
+        { name: "light", value: "#f3f3f3" },
+        { name: "dark", value: "#131313" },
+      ],
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -17,7 +23,6 @@ const preview: Preview = {
 export const decorators = [
   withThemeByClassName({
     themes: {
-      // nameOfTheme: 'classNameForTheme',
       light: "",
       dark: "dark",
     },

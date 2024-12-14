@@ -10,7 +10,7 @@ export const getButtonClasses = cva(
           // Default
           "bg-white",
           // Disabled
-          "",
+          "disabled:bg-white/25",
         ],
         secondary: "",
         flat: "",
@@ -22,9 +22,9 @@ export const getButtonClasses = cva(
         flatInvert: "",
       },
       size: {
-        small: "px-12 py-3",
-        medium: "px-14 py-4",
-        large: "px-16 py-4",
+        small: "px-12 py-3 text-xs",
+        medium: "px-14 py-4 text-base",
+        large: "px-16 py-4 text-xl",
       },
     },
     defaultVariants: {
