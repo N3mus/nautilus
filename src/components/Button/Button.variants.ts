@@ -34,7 +34,7 @@ export const getButtonClasses = cva(
           "hover:[&:not(:disabled)]:shadow-button-dark-hover",
           "active:[&:not(:disabled)]:bg-black/75",
         ],
-        secondaryInvert: "",
+        secondaryInvert: "text-black",
         flatInvert: "",
       },
       size: {

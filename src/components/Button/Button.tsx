@@ -92,10 +92,16 @@ export function Button<C extends ElementType = "button">({
   }, [mouseIn, mouseOut, gradientPosition, disabled]);
 
   const getBorderStyle = useCallback(() => {
-    if (variant !== "secondary") return undefined;
-    if (disabled) {
+    if (variant !== "secondary" && variant !== "secondaryInvert")
+      return undefined;
+    if (variant === "secondary" && disabled) {
       return {
         border: "0.13rem solid rgba(255, 255, 255, 0.25)",
+      };
+    }
+    if (variant === "secondaryInvert" && disabled) {
+      return {
+        border: "0.13rem solid rgba(0, 0, 0, 0.25)",
       };
     }
     return {
