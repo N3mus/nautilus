@@ -23,7 +23,11 @@ export const getButtonClasses = cva(
           "active:[&:not(:disabled)]:shadow-danger-primary-button-active",
         ],
         dangerSecondary: "",
-        dangerFlat: "",
+        dangerFlat: [
+          "text-brand-red bg-transparent border-transparent border-b-2",
+          "disabled:text-[rgba(var(--color-red),0.25)]",
+          "hover:[&:not(:disabled)]:border-brand-red",
+        ],
         primaryInvert: "",
         secondaryInvert: "",
         flatInvert: "",
