@@ -42,7 +42,8 @@ const getGradientOutsideColor = (
   v: CVAButtonProps["variant"],
   disabled?: boolean
 ) => {
-  const color = v === "secondary" ? "255, 255, 255" : "0, 0, 0";
+  const color =
+    v === "secondary" || v === "primaryInvert" ? "255, 255, 255" : "0, 0, 0";
   const alpha = disabled ? 0.25 : 1;
   return `rgba(${color}, ${alpha})`;
 };

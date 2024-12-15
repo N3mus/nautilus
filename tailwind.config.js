@@ -28,11 +28,11 @@ module.exports = {
           "radial-gradient(100% 100% at 50% 0%, rgba(50, 255, 95, 0.25) 0%, rgba(50, 192, 254, 0.25) 100%)",
       },
       boxShadow: {
-        "primary-button-active":
+        "button-bright-active":
           "0px 8px 8px 0px rgba(var(--color-blue), 0.64) inset",
-        "primary-button-hover": "0px 0px 16px 0px rgb(var(--color-blue))",
-        "danger-primary-button-active": "0px 4px 4px 0px #00000040 inset",
-        "danger-primary-button-hover": [
+        "button-bright-hover": "0px 0px 16px 0px rgb(var(--color-blue))",
+        "button-dark-active": "0px 4px 4px 0px #00000040 inset",
+        "button-dark-hover": [
           "0px 0px 0px 1px rgba(0, 0, 0, 0.25)",
           "0px 1px 1px 0px rgba(0, 0, 0, 0.25)",
           "0px 2px 2px 0px rgba(0, 0, 0, 0.25)",
