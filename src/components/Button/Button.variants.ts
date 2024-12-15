@@ -5,11 +5,23 @@ export const getButtonClasses = cva(
   {
     variants: {
       variant: {
-        cta: "bg-radial-top text-white disabled:bg-radial-top-disabled disabled:text-black",
+        cta: [
+          "bg-radial-top text-white",
+          "disabled:bg-radial-top-disabled disabled:text-black",
+        ],
         primary: "bg-white disabled:bg-white/25",
         secondary: "text-white",
-        flat: "bg-transparent border-transparent border-b-2 hover:[&:not(:disabled)]:border-black disabled:text-black/25",
-        dangerPrimary: "",
+        flat: [
+          "bg-transparent border-transparent border-b-2",
+          "disabled:text-black/25",
+          "hover:[&:not(:disabled)]:border-black",
+        ],
+        dangerPrimary: [
+          "bg-brand-red text-white transition-shadow",
+          "disabled:bg-[rgba(var(--color-red),0.25)] disabled:text-black",
+          "hover:[&:not(:disabled)]:shadow-danger-primary-button-hover",
+          "active:[&:not(:disabled)]:shadow-danger-primary-button-active",
+        ],
         dangerSecondary: "",
         dangerFlat: "",
         primaryInvert: "",

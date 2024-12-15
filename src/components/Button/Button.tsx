@@ -16,7 +16,7 @@ const GRADIENT_END = 300;
 
 const whileVariants = {
   hover: {
-    boxShadow: "0 0 16px 0 var(--color-blue)",
+    boxShadow: "0 0 16px 0 rgb(var(--color-blue))",
   },
   tap: {
     boxShadow: "0px 8px 8px 0px #00000040 inset",
@@ -73,8 +73,8 @@ export function Button<C extends ElementType = "button">({
 
   const gradientPosition = useMotionValue(GRADIENT_START);
   const gradientPositionSpring = useSpring(gradientPosition);
-  const gradientMotionTemplate = useMotionTemplate`radial-gradient(100% 100% at 50% ${gradientPositionSpring}%, var(--color-green) 0%, var(--color-blue) 100%, ${gradientOutsideColor} 150%)`;
-  const borderGradientMotionTemplate = useMotionTemplate`linear-gradient(var(--color-secondary-border-bg), var(--color-secondary-border-bg)), radial-gradient(100% 100% at 50% ${gradientPositionSpring}%, var(--color-green) 0%, var(--color-blue) 100%, ${gradientOutsideColor} 150%)`;
+  const gradientMotionTemplate = useMotionTemplate`radial-gradient(100% 100% at 50% ${gradientPositionSpring}%, rgb(var(--color-green)) 0%, rgb(var(--color-blue)) 100%, ${gradientOutsideColor} 150%)`;
+  const borderGradientMotionTemplate = useMotionTemplate`linear-gradient(rgb(var(--color-secondary-border-bg)), rgb(var(--color-secondary-border-bg))), radial-gradient(100% 100% at 50% ${gradientPositionSpring}%, rgb(var(--color-green)) 0%, rgb(var(--color-blue)) 100%, ${gradientOutsideColor} 150%)`;
 
   useEffect(() => {
     if (disabled) {

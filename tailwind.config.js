@@ -15,10 +15,10 @@ module.exports = {
       },
       colors: {
         brand: {
-          blue: "var(--color-blue)",
-          green: "var(--color-green)",
-          gray: "var(--color-gray)",
-          red: "var(--color-red)",
+          blue: "rgb(var(--color-blue))",
+          green: "rgb(var(--color-green))",
+          gray: "rgb(var(--color-gray))",
+          red: "rgb(var(--color-red))",
         },
       },
       backgroundImage: {
@@ -28,13 +28,24 @@ module.exports = {
           "radial-gradient(100% 100% at 50% 0%, rgba(50, 255, 95, 0.25) 0%, rgba(50, 192, 254, 0.25) 100%)",
       },
       boxShadow: {
-        "button-active": "0px 8px 8px 0px rgba(var(--color-blue), 0.64) inset",
-        "primary-button-hover": "0px 0px 16px 0px var(--color-blue)",
+        "primary-button-active":
+          "0px 8px 8px 0px rgba(var(--color-blue), 0.64) inset",
+        "primary-button-hover": "0px 0px 16px 0px rgb(var(--color-blue))",
+        "danger-primary-button-active": "0px 4px 4px 0px #00000040 inset",
+        "danger-primary-button-hover": [
+          "0px 0px 0px 1px rgba(0, 0, 0, 0.25)",
+          "0px 1px 1px 0px rgba(0, 0, 0, 0.25)",
+          "0px 2px 2px 0px rgba(0, 0, 0, 0.25)",
+          "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+          "0px 8px 8px 0px rgba(0, 0, 0, 0.25)",
+          "0px 16px 16px 0px rgba(0, 0, 0, 0.25)",
+        ],
       },
     },
   },
   variants: {
     extend: {
+      backgroundColor: ["disabled"],
       boxShadow: ["hover", "focus"],
     },
   },

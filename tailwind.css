@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --color-blue: #32c0f0;
-    --color-green: #32ff5f;
-    --color-gray: #3f4346;
-    --color-red: #ff0000;
+    --color-blue: 50, 192, 240;
+    --color-green: 50, 255, 95;
+    --color-gray: 63, 67, 70;
+    --color-red: 255, 0, 0;
     --color-secondary-border-bg: var(--color-gray);
   }
 }
