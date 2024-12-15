@@ -4,6 +4,15 @@ module.exports = {
   darkMode: ["class", '[data-mode="dark"]'],
   theme: {
     extend: {
+      fontSize: {
+        "3.5xl": [
+          "2rem",
+          {
+            lineHeight: "2.52rem",
+            letterSpacing: "0.013rem",
+          },
+        ],
+      },
       colors: {
         brand: {
           blue: "var(--color-blue)",

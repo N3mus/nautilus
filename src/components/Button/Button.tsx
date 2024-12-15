@@ -1,4 +1,4 @@
-import { ElementType, useCallback, useEffect, useState } from "react";
+import { ElementType, useCallback, useEffect, useMemo, useState } from "react";
 import {
   motion,
   useMotionTemplate,
@@ -29,6 +29,8 @@ const variantsWithGradientText = [
   "primaryInvert",
   "secondaryInvert",
 ] as const;
+
+const variantsWithGlow = ["cta", "primary", "secondary"];
 
 const isGradientTextVariant = (
   v: CVAButtonProps["variant"]
@@ -102,7 +104,19 @@ export function Button<C extends ElementType = "button">({
       backgroundOrigin: "border-box",
       backgroundClip: "padding-box, border-box",
     };
-  }, [borderGradientMotionTemplate]);
+  }, [variant, disabled, borderGradientMotionTemplate]);
+
+  const shouldGlow = useMemo(() => {
+    if (disabled) {
+      return false;
+    }
+
+    if (!variant) {
+      return true;
+    }
+
+    return (variantsWithGlow as Readonly<string[]>).includes(variant);
+  }, [disabled, variant]);
 
   return (
     <MotionComponent
@@ -111,8 +125,8 @@ export function Button<C extends ElementType = "button">({
         type: "tween",
         duration: 0.15,
       }}
-      whileHover={disabled ? undefined : whileVariants.hover}
-      whileTap={disabled ? undefined : whileVariants.tap}
+      whileHover={shouldGlow ? whileVariants.hover : undefined}
+      whileTap={shouldGlow ? whileVariants.tap : undefined}
       onMouseEnter={() => {
         setMouseIn(true);
         setMouseOut(false);
