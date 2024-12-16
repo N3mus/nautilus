@@ -10,7 +10,7 @@
   "scripts": {
     "format": "prettier --write .",
     "build": "node build.js",
-    "dev": "esbuild src/index.ts --bundle --sourcemap --outdir=dist --watch",
+    "dev": "esbuild src/index.ts --bundle --sourcemap --outdir=dist --watch --loader:.ttf=file",
     "test": "jest --watchAll --verbose",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
