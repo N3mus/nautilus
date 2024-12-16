@@ -25,7 +25,12 @@ export const getButtonClasses = cva(
           "hover:[&:not(:disabled)]:shadow-button-dark-hover",
           "active:[&:not(:disabled)]:shadow-button-dark-active",
         ],
-        dangerSecondary: "",
+        dangerSecondary: [
+          "border-2 border-brand-red text-brand-red",
+          "hover:[&:not(:disabled)]:bg-white/25 hover:[&:not(:disabled)]:shadow-button-dark-hover",
+          "active:[&:not(:disabled)]:shadow-button-dark-active",
+          "disabled:border-[rgba(var(--color-red),0.25)] disabled:text-[rgba(var(--color-red),0.25)]",
+        ],
         dangerFlat: [
           "text-brand-red bg-transparent relative",
           "disabled:text-[rgba(var(--color-red),0.25)]",
