@@ -11,3 +11,55 @@
     --color-secondary-border-bg: var(--color-gray);
   }
 }
+
+@font-face {
+  font-family: "Sora";
+  font-weight: 100;
+  src: url("./public/Sora-Thin.ttf");
+}
+
+@font-face {
+  font-family: "Sora";
+  font-weight: 200;
+  src: url("./public/Sora-ExtraLight.ttf");
+}
+
+@font-face {
+  font-family: "Sora";
+  font-weight: 300;
+  src: url("./public/Sora-Light.ttf");
+}
+
+@font-face {
+  font-family: "Sora";
+  font-weight: 400;
+  src: url("./public/Sora-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Sora";
+  font-weight: 500;
+  src: url("./public/Sora-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Sora";
+  font-weight: 600;
+  src: url("./public/Sora-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Sora";
+  font-weight: 700;
+  src: url("./public/Sora-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Sora";
+  font-weight: 800;
+  src: url("./public/Sora-ExtraBold.ttf");
+}
+
+* {
+  @apply font-sora;
+}

@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: ["class", '[data-mode="dark"]'],
   theme: {
+    fontFamily: {
+      sora: ["Sora", "Helvetica", "sans-serif"],
+    },
     extend: {
       fontSize: {
         "3.5xl": [
