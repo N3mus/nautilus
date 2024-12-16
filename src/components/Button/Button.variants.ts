@@ -12,9 +12,12 @@ export const getButtonClasses = cva(
         primary: "bg-white disabled:bg-white/25",
         secondary: "text-white",
         flat: [
-          "bg-transparent border-transparent border-b-2",
+          "relative bg-transparent",
           "disabled:text-black/25",
           "hover:[&:not(:disabled)]:border-black",
+          "after:content-[''] after:absolute after:bottom-0 after:left-0",
+          "after:bg-black after:h-0.5 after:w-0 after:will-change-[width]",
+          "hover:[&:not(:disabled)]:after:w-full after:transition-all",
         ],
         dangerPrimary: [
           "bg-brand-red text-white transition-shadow",
@@ -24,9 +27,11 @@ export const getButtonClasses = cva(
         ],
         dangerSecondary: "",
         dangerFlat: [
-          "text-brand-red bg-transparent border-transparent border-b-2",
+          "text-brand-red bg-transparent relative",
           "disabled:text-[rgba(var(--color-red),0.25)]",
-          "hover:[&:not(:disabled)]:border-brand-red",
+          "after:content-[''] after:absolute after:bottom-0 after:left-0",
+          "after:bg-brand-red after:h-0.5 after:w-0 after:will-change-[width]",
+          "hover:[&:not(:disabled)]:after:w-full after:transition-all",
         ],
         primaryInvert: [
           "bg-black text-white transition-all",
@@ -34,8 +39,18 @@ export const getButtonClasses = cva(
           "hover:[&:not(:disabled)]:shadow-button-dark-hover",
           "active:[&:not(:disabled)]:bg-black/75",
         ],
-        secondaryInvert: "text-black",
-        flatInvert: "",
+        secondaryInvert: [
+          "text-black",
+          "hover:[&:not(:disabled)]:shadow-button-dark-hover",
+          "active:[&:not(:disabled)]:shadow-button-dark-active",
+        ],
+        flatInvert: [
+          "text-white bg-transparent relative",
+          "disabled:text-white/25",
+          "after:content-[''] after:absolute after:bottom-0 after:left-0",
+          "after:bg-white after:h-0.5 after:w-0 after:will-change-[width]",
+          "hover:[&:not(:disabled)]:after:w-full after:transition-all",
+        ],
       },
       size: {
         small: "px-12 py-3 text-xs",

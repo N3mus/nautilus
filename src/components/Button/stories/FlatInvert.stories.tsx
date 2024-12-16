@@ -4,7 +4,7 @@ import { Meta, StoryObj } from "@storybook/react/*";
 import buttonArgTypes from "./button-argtypes";
 
 const meta: Meta<typeof Button> = {
-  title: "Button/Secondary Invert",
+  title: "Button/Flat Invert",
   component: Button,
   parameters: {
     layout: "centered",
@@ -14,7 +14,7 @@ const meta: Meta<typeof Button> = {
   },
   tags: ["autodocs"],
   args: {
-    variant: "secondaryInvert",
+    variant: "flatInvert",
     onClick: fn(),
   },
   argTypes: buttonArgTypes,

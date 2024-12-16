@@ -4,7 +4,7 @@ import { Meta, StoryObj } from "@storybook/react/*";
 import buttonArgTypes from "./button-argtypes";
 
 const meta: Meta<typeof Button> = {
-  title: "Button/DangerPrimary",
+  title: "Button/Danger Primary",
   component: Button,
   parameters: {
     layout: "centered",
