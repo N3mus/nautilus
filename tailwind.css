@@ -9,6 +9,7 @@
     --color-gray: 63, 67, 70;
     --color-red: 255, 0, 0;
     --color-secondary-border-bg: var(--color-gray);
+    --color-input-default-bg: var(--color-gray);
   }
 }
 
