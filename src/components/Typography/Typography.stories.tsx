@@ -7,10 +7,14 @@ const meta: Meta<typeof Typography> = {
   parameters: {
     layout: "centered",
   },
+  decorators: [
+    (Story) => (
+      <div className="max-w-md">
+        <Story />
+      </div>
+    ),
+  ],
   tags: ["autodocs"],
-  args: {
-    className: "max-w-md text-left",
-  },
   argTypes: {
     variant: {
       description: "Changing the variant mainly changes the size",
