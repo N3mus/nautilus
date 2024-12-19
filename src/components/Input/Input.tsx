@@ -110,7 +110,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         (entries) => {
           if (entries[0]?.isIntersecting) {
             getAncestorBackground(inputRef.current!).then((background) => {
-              console.log(background);
               if (background) setBackgroundColor(background);
             });
 
