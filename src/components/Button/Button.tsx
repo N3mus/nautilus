@@ -61,10 +61,11 @@ export function Button<C extends ElementType = "button">({
   disabled,
   className,
   style,
+  onMouseEnter,
+  onMouseLeave,
   ...props
 }: ButtonProps<C>) {
   const [mouseIn, setMouseIn] = useState(false);
-  const [mouseOut, setMouseOut] = useState(false);
 
   const Component = as || "button";
   const MotionComponent = motion<C>(Component);
@@ -82,14 +83,16 @@ export function Button<C extends ElementType = "button">({
       return;
     }
 
-    if (mouseIn) {
-      gradientPosition.set(0);
+    if (!mouseIn && gradientPosition.get() === GRADIENT_START) {
+      return;
     }
 
-    if (mouseOut) {
+    if (mouseIn) {
+      gradientPosition.set(0);
+    } else {
       gradientPosition.set(GRADIENT_END);
     }
-  }, [mouseIn, mouseOut, gradientPosition, disabled]);
+  }, [mouseIn, gradientPosition, disabled]);
 
   const getBorderStyle = useCallback(() => {
     if (variant !== "secondary" && variant !== "secondaryInvert")
@@ -125,6 +128,17 @@ export function Button<C extends ElementType = "button">({
     return (variantsWithGlow as Readonly<string[]>).includes(variant);
   }, [disabled, variant]);
 
+  const handleMouseEnter = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    setMouseIn(true);
+    gradientPositionSpring.jump(GRADIENT_START);
+    onMouseEnter?.(e);
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    setMouseIn(false);
+    onMouseLeave?.(e);
+  };
+
   return (
     <MotionComponent
       disabled={disabled}
@@ -134,15 +148,8 @@ export function Button<C extends ElementType = "button">({
       }}
       whileHover={shouldGlow ? whileVariants.hover : undefined}
       whileTap={shouldGlow ? whileVariants.tap : undefined}
-      onMouseEnter={() => {
-        setMouseIn(true);
-        setMouseOut(false);
-        gradientPositionSpring.jump(GRADIENT_START);
-      }}
-      onMouseLeave={() => {
-        setMouseOut(true);
-        setMouseIn(false);
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className={cn(className, variantClassNames)}
       style={{
         ...getBorderStyle(),
